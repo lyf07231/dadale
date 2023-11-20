@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-image: url("https://img1.baidu.com/it/u=2117476064,2744187874&fm=253&fmt=auto&app=138&f=JPEG?w=694&h=500");
+            background-size: auto; /* 可选，根据需要调整 */
+        }
+    </style>
+</head>
+<body>
+<div class="avatar-container">
+    <img src="https://thumbnail0.baidupcs.com/thumbnail/2792f4419m48c0a24cec76ff16cda16d?fid=3679434038-250528-862040809185668&time=1700470800&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-GV2V7qpjJr100B82d%2Fw5Fq36EPQ%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=8661370359131434331&dp-callid=0&file_type=0&size=c710_u400&quality=100&vuk=-&ft=video" class="avatar-image">
+</div>
+<div class="item">
+    <!-- 静态显示区域 -->
+    <div class="item0" id="staticNickname">用户昵称：{{ info.NICKNAME }}</div>
+    <div class="item0" id="staticHobby">我的爱好：{{ info.HOBBY }}</div>
+
+    <!-- 编辑区域，初始时隐藏 -->
+    <form method="post">
+        {% csrf_token %}
+    <div class="item0" id="editNickname" style="display: none;font-size:18px">
+        用户昵称：<input type="text" name="nickname" value={{ info.NICKNAME }} />
+    </div>
+    <div class="item0" id="editHobby" style="display: none;font-size:18px">
+        我的爱好：<input type="text" name="hobby" value={{ info.HOBBY }} />
+    </div>
+       <input type="submit" value="保存修改" id="saveChanges" style="display: none;font-size:20px">
+    </form>
+    <button onclick="toggleEditing()" id="editButton" style="margin-left: 150px;font-size: 18px;">编辑</button>
+</div>
+
+</body>
+<script>
+    var editing = false;
+    function toggleEditing() {
+        editing = !editing;
+        document.getElementById('staticNickname').style.display = editing ? 'none' : 'block';
+        document.getElementById('staticHobby').style.display = editing ? 'none' : 'block';
+        document.getElementById('editNickname').style.display = editing ? 'block' : 'none';
+        document.getElementById('editHobby').style.display = editing ? 'block' : 'none';
+
+        // 控制编辑和保存按钮的显示
+        document.getElementById('editButton').style.display = editing ? 'none' : 'block';
+        document.getElementById('saveChanges').style.display = editing ? 'block' : 'none';
+    }
+</script>
+
+<style>
+.avatar-image {
+  width: 100%;
+  height: 100%;
+}
+.avatar-container {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 20px;
+  margin: auto;
+  margin-top: 60px
+}
+
+.item {
+background-color: #e4ecf8;
+text-align: left;
+padding: 30px 80px;
+margin-block: 25px;
+font-size: 12px;
+width: 60%;
+margin: auto;
+margin-top: 30px
+}
+
+.item0 {
+background-color: #f0f8e4;
+text-align-last: left;
+font-size: 18px;
+padding: 20px;
+margin-left: 150px;
+margin-block: 20px;
+margin-bottom: 20px;
+margin-right: 150px;
+}
+.cancel-confirm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+
+  .cancel-dialog {
+    width: 280px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .btn-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .confirm-btn {
+    margin-right: 10px;
+    color: #fff;
+    background-color: #ff4949;
+    border-radius: 4px;
+    padding: 8px 16px;
+  }
+
+  .cancel-btn {
+   margin-right: 10px;
+   color: #fff;
+   background-color: #5555ff;
+   border-radius: 4px;
+   padding: 8px 16px;
+  }
+
+</style>
+
+</html>

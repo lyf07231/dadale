@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background: linear-gradient(to right, white, #6666FF);
+        }
+        .background-overlay1 {
+            position: absolute;
+            top: 0;
+            left: 22%;
+            width: 56%;
+            height: 100%;
+            background-color: white;
+            z-index: -1;
+            opacity: 0.3;
+        }
+        .background-overlay2 {
+            position: absolute;
+            top: 0;
+            left: 22%;
+            width: 56%;
+            height: 100%;
+            background-color: LightYellow;
+            z-index: -1;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+<button onclick="toggleNav()">切换导航栏</button>
+<div id="sidenav" class="sidenav">
+    <hr class="sidebar-divider">
+    <a href="/portal">🏠</a>
+    <a href="/create">➕</a>
+    <a href="/me">👤</a>
+    <!-- 添加其他链接 -->
+</div>
+<div class="container">
+    <div class="top-section">
+        <!-- 头像 -->
+        <div class="avatar-container">
+            <img src="https://thumbnail0.baidupcs.com/thumbnail/2792f4419m48c0a24cec76ff16cda16d?fid=3679434038-250528-862040809185668&time=1700470800&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-GV2V7qpjJr100B82d%2Fw5Fq36EPQ%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=8661370359131434331&dp-callid=0&file_type=0&size=c710_u400&quality=100&vuk=-&ft=video" class="avatar-image">
+        </div>
+        <!-- 点赞图标和点赞数 -->
+        <div class="like-container">
+            <img src="https://img1.baidu.com/it/u=48971183,1273202903&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" class="like-icon">
+            <div class="like-count">点赞数:{{ info.GOOD }}</div>
+        </div>
+    </div>
+    <div class="nickname">用户昵称：{{ info.NICKNAME }}</div>
+    <div class="nickname">我的爱好：{{ info.HOBBY }}</div>
+    <div class="settings" style="margin-top: 20px">
+        <img src="https://img.zcool.cn/community/01bdc055b4df4a32f875251fad3471.jpg@1280w_1l_2o_100sh.jpg" class="like-icon" onclick="gotoSettings()">
+        设置
+    </div>
+
+    <!-- 我的发起按钮 -->
+    <div class="module" onclick="gotoStarted()" style="margin-top: 20px">我的发起</div>
+    <!-- 我的项目按钮 -->
+    <div class="module" onclick="gotoJoined()">我的项目</div>
+    <!-- 常见问题模块 -->
+    <div class="module" onclick="goOUT()">
+        <span class="module-text">登出账号</span>
+    </div>
+</div>
+<script>
+    function gotoSettings() {
+        location.href = './setting/'
+    }
+
+    function gotoStarted() {
+        location.href = './wofaqi/started/'
+    }
+
+    function gotoJoined() {
+        location.href = './wocanjia/join'
+    }
+
+    function goOUT() {
+        location.href = '/'
+    }
+</script>
+
+</body>
+<style>
+      .sidenav {
+    height: 100%; /* 全屏高度 */
+    width: 150px; /* 设置侧边栏宽度 */
+    position: fixed; /* 固定位置 */
+    z-index: 1; /* 位于页面顶层 */
+    top: 0; /* 顶部对齐 */
+    left: 0; /* 左侧对齐 */
+    background-color: #111; /* 导航栏背景颜色 */
+    overflow-x: hidden; /* 隐藏水平滚动条 */
+    padding-top: 20px;
+}
+
+    /* 导航栏链接样式 */
+    .sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+    }
+
+    /* 鼠标悬停时的链接样式 */
+    .sidenav a:hover {
+        color: #f1f1f1;
+    }
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin-right: -140px
+}
+
+.top-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.avatar-container {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+
+  margin-bottom: 20px;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+
+}
+
+.like-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+}
+
+.like-icon {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.like-count {
+  font-size: 18px;
+  color: #FF6633;
+}
+
+.nickname {
+  margin-left: 10px;
+  font-size: 18px;
+  margin-top: 10px;
+  font-size: 20px
+}
+
+
+.settings {
+  display: flex;
+  font-size: 20px;
+  color: #FF6633;
+  margin-top: 5px;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+.nav-button {
+  font-size: 12px;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px 0;
+  cursor: pointer;
+  text-align: center;
+	justify-content: center;
+  flex: 1;
+  margin: 5px;
+}
+
+.section {
+  display: flex;
+  justify-content: space-around;
+}
+
+.module {
+  font-size: 26px;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 20px;
+  background-color: #f0f8e4;
+  width: 30%;
+  border-radius: 10px
+}
+
+</style>
+</html>

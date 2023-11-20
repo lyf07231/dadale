@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>身份认证</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    body {
+      background: url('https://x0.ifengimg.com/res/2019/55AB2A6A24C40252F5A59850719067F203FDAE63_size553_w3840_h2160.jpeg') no-repeat;
+      background-size: cover;
+      height: 100vh;
+    }
+
+    #login_box {
+      width: 20%;
+      height: 400px;
+      background-color: grey;
+      margin: auto;
+      margin-top: 5%;
+      text-align: center;
+      border-radius: 10px;
+      padding: 50px 50px;
+      opacity: 0.8
+    }
+
+    h2 {
+      color: white;
+      margin-top: 5%;
+    }
+
+    #input-box {
+      margin-top: 5%;
+    }
+
+    span {
+      color: #fff;
+    }
+
+    input {
+      border: 0;
+      width: 60%;
+      font-size: 15px;
+      color: #fff;
+      background: transparent;
+      border-bottom: 2px solid #fff;
+      padding: 5px 10px;
+      outline: none;
+      margin-top: 10px;
+    }
+
+    #sign_up {
+      margin-top: 45%;
+      margin-left: 60%;
+    }
+
+    a {
+      color: #b94648;
+    }
+  </style>
+</head>
+<body>
+<div class="back-container">
+    <img src="https://th.bing.com/th/id/R.2f527390e0cdcf85bbb511b85c8cf701?rik=xZlzP0ZdzWpkbA&pid=ImgRaw&r=0" class="back-icon" onclick="gotomyinfo()">返回
+</div>
+    <div id="login_box">
+        <h2>身份验证</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-item">
+                <div class="label">学号：</div>
+                <input type="text" placeholder="" name="num" class="input-field">
+            </div>
+            <div class="form-item">
+                <div class="label">姓名：</div>
+                <input type="text" placeholder="" name="name" class="input-field">
+            </div>
+            <input type="submit" value="提交认证" style="margin-top:50px">
+        </form>
+    </div>
+</body>
+<script>
+    {% for msg in messages %}
+        alert('{{ msg.message }}');
+    {% endfor %}
+</script>
+<style scoped>
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+}
+
+.input-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+}
+.input-field {
+  width: 200px;
+  height: 32px;
+  background-color: #bdbdbd;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 0 10px;
+}
+
+.label {
+  width: 60px;
+  text-align: center;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+input[type="text"] {
+  width: 200px;
+  height: 32px;
+  background-color: #6b6b6b;
+  border: 1px solid #606060;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 0 10px;
+}
+
+.submit-button {
+  width: 80px;
+  height: 32px;
+  background-color: #409eff;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  border: none;
+}
+.back-container{
+	display: flex;
+	margin-left: 3px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+	align-items: center;
+}
+.back-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+</style>
+</html>

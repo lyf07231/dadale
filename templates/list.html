@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity List</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, white, #FFCC66);
+        }
+    </style>
+</head>
+<body>
+<div>
+    <img src="https://img1.baidu.com/it/u=1046604987,161432534&fm=253&fmt=auto&app=138&f=JPEG?w=655&h=450" width=100% height=100 alt="Icon">
+</div>
+<p style="text-align: center;font-size: 24px">———— 活动列表 ————</p>
+<div style="margin-left: 29%;font-size:20px;margin-top: 50px">
+{% if activities %}
+    <ul style="list-style-type: none;">
+        {% for item in activities %}
+            <li style="margin-bottom: 10px; padding: 10px; border: 1px solid #ddd;">
+                <a href="{% url 'signup_page' item.actnum %}" style="text-decoration: none; color: #333;">
+                    <strong>活动名称： {{ item.Actname }}</strong>
+                    <p>活动时间： {{ item.Time }}</p>
+                    <p>活动地点： {{ item.address }}</p>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>没有活动数据。</p>
+{% endif %}
+</div>
+<div>
+    <img src="https://www.manpingou.com/uploads/allimg/200919/25-20091Z92P2428.jpg" height=250px  alt="Icon" style="margin-top:150px;margin-left:38%;border-radius: 25px">
+</div>
+<div style="text-align:center;margin-bottom:60px">
+    <p>帐号冻结和举报 | 搭搭乐客服 | 反馈问题</p>
+    <p>Copyright © 2023 dadale. All Rights Reserved.</p>
+    <p>——————搭搭乐 版权所有——————</p>
+</div>
+
+
+<script>
+    // 用于解析 URL 查询字符串的函数
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    // 使用该函数获取 "typename" 参数
+    const typename = getQueryParam('typename');
+    console.log(typename); // 这将输出 "线上游戏" 或其他通过 URL 传递的值
+
+</script>
+</body>
+</html>

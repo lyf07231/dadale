@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, white, #99CCFF);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <img src="https://photo-static-api.fotomore.com/creative/vcg/veer/400/new/VCG41N663558978.jpg?uid=510&timestamp=1700396935&sign=d0bcd76e757879afba35d4bc36d6b853" width=100% height=100 alt="Icon">
+</div>
+<p style="text-align: center;font-size: 24px">———— 活动报名 ————</p>
+<div style="
+margin-left: 30%;
+margin-top: 60px;
+font-size: 20px">
+<p>活动名称:{{ activity.Actname }}</p>
+<p>活动地点:{{ activity.address }}</p>
+<p>活动时间:{{ activity.Time }}</p>
+<p>已有人数/需要人数:{{ activity.already }}/{{ activity.need }}</p>
+<p>报名截止时间:{{ activity.end }}</p>
+<p>活动详情:{{ activity.content }}</p>
+<p>联系方式:{{ activity.phone }}</p>
+<form method="post">
+    {% csrf_token %}
+    <input type="submit" value="报名">
+</form>
+</div>
+<div style="text-align:center;margin-top:100px;margin-bottom:60px">
+    <p>帐号冻结和举报 | 搭搭乐客服 | 反馈问题</p>
+    <p>Copyright © 2023 dadale. All Rights Reserved.</p>
+    <p>——————搭搭乐 版权所有——————</p>
+</div>
+</body>
+<script>
+    {% for msg in messages %}
+        alert('{{ msg.message }}');
+    {% endfor %}
+</script>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>发起活动</title>
+</head>
+<body>
+<button onclick="toggleNav()">切换导航栏</button>
+<div id="sidenav" class="sidenav">
+    <hr class="sidebar-divider">
+    <a href="/portal">🏠</a>
+    <a href="/create">➕</a>
+    <a href="/me">👤</a>
+    <!-- 添加其他链接 -->
+</div>
+<div class="font">
+    <span class="icon">&#x1F4E2;</span> <!-- 喇叭图标 -->
+    欢迎使用活动招募平台，请选择您要发起的活动类型
+</div>
+<div class="title">
+    <div class="container">
+        <img src="https://www.manpingou.com/uploads/allimg/230530/25-230530105200943.jpg" width=550 height=550 alt="Idea">
+        <select id="activityType" class="picker">
+            <option value="线下游戏">线下游戏</option>
+            <option value="线上游戏">线上游戏</option>
+            <option value="场馆活动">场馆活动</option>
+            <option value="户外活动">户外活动</option>
+            <!-- 其他选项 -->
+        </select>
+        <button class="confirm" onclick="confirmSelection()">确定</button>
+    </div>
+</div>
+<script>
+        // 在这里编写JavaScript代码
+        function confirmSelection() {
+            let selectedType = document.getElementById("activityType").value;
+            if (selectedType) {
+                location.href='./detail?typename='+ encodeURIComponent(selectedType);
+            } else {
+                alert("请选择一个活动类型");
+            }
+        }
+    </script>
+</body>
+<style>
+      .sidenav {
+    height: 100%; /* 全屏高度 */
+    width: 150px; /* 设置侧边栏宽度 */
+    position: fixed; /* 固定位置 */
+    z-index: 1; /* 位于页面顶层 */
+    top: 0; /* 顶部对齐 */
+    left: 0; /* 左侧对齐 */
+    background-color: #111; /* 导航栏背景颜色 */
+    overflow-x: hidden; /* 隐藏水平滚动条 */
+    padding-top: 20px;
+}
+
+    /* 导航栏链接样式 */
+    .sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+    }
+
+    /* 鼠标悬停时的链接样式 */
+    .sidenav a:hover {
+        color: #f1f1f1;
+    }
+	.font {
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  font-size: 20px;
+	  color: #333;
+	  text-align: center;
+	  background-color: #f2f2f2; /* 提示区域的背景色 */
+	  padding: 15px;
+	  border-radius: 8px; /* 圆角 */
+	  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 轻微的阴影 */
+	  margin: 20px;
+	  font-weight: bold; /* 文字加粗 */
+	}
+
+	.icon {
+	  margin-right: 10px; /* 图标和文字之间的间隔 */
+	  font-size: 24px; /* 图标的大小 */
+	}
+
+    .confirm:hover {
+      background-color: #45a049; /* 鼠标悬浮时的背景色 */
+    }
+
+    .title{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .font{
+      font-size: 24px;
+      color: #333;
+      text-align: center;
+      margin-bottom: 40px; /* 增加标题下方的间距 */
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+            width: 30vh;
+        height: 50vh; /* 降低高度比例 */
+        padding: 0 20px; /* 添加一些内边距 */
+      }
+
+      .confirm {
+        border: none;
+        background-color: #4CAF50; /* 绿色背景 */
+        color: white; /* 白色文字 */
+        padding: 8px 16px; /* 减小填充使按钮更小 */
+        font-size: 14px; /* 减小字体大小 */
+        border-radius: 5px; /* 圆角边框 */
+        margin-top: 20px; /* 减小上边距 */
+        transition: background-color 0.3s; /* 鼠标悬浮时的过渡效果 */
+      }
+
+      .picker {
+        border: 1px solid #ddd; /* 更柔和的边框颜色 */
+        height: 40px; /* 保持选择器高度 */
+        width: 100%; /* 宽度增加到100% */
+        margin: 0 auto; /* 水平居中 */
+        border-radius: 5px; /* 圆角边框 */
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 添加阴影效果 */
+        background-color: white; /* 背景色设置为白色 */
+      }
+
+    .picker-content {
+      line-height: 40px; /* 使用行高居中文本 */
+      text-align: center;
+      color: #555; /* 文本颜色 */
+}
+
+</style>
+</html>

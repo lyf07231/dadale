@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <style>
+    body {
+      background: url('https://x0.ifengimg.com/res/2019/55AB2A6A24C40252F5A59850719067F203FDAE63_size553_w3840_h2160.jpeg') no-repeat;
+      background-size: cover;
+      height: 100vh;
+    }
+
+    #login_box {
+      width: 20%;
+      height: 400px;
+      background-color: grey;
+      margin: auto;
+      margin-top: 8%;
+      text-align: center;
+      border-radius: 10px;
+      padding: 50px 50px;
+      opacity: 0.8
+    }
+
+    h2 {
+      color: white;
+      margin-top: 5%;
+    }
+
+    #input-box {
+      margin-top: 5%;
+    }
+
+    span {
+      color: #fff;
+    }
+
+    #input_style {
+      border: 0;
+      width: 60%;
+      font-size: 15px;
+      color: #fff;
+      background: transparent;
+      border-bottom: 2px solid #fff;
+      padding: 5px 10px;
+      outline: none;
+      margin-top: 10px;
+    }
+
+
+    .button {
+        margin-top: 50px;
+      width: 60%;
+      height: 30px;
+      border-radius: 10px;
+      border: 0;
+      color: Blue;
+      text-align: center;
+      line-height: 30px;
+      font-size: 15px;
+      background: LightBlue;
+    }
+
+    .cen {
+      width: 20%;
+      height: 400px;
+      background-color: grey;
+      margin: auto;
+      margin-top: 8%;
+      text-align: center;
+      border-radius: 10px;
+      padding: 50px 50px;
+      opacity: 0.8
+    }
+
+    .input{
+        width: 200px;
+  height: 32px;
+  background-color: #bdbdbd;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 0 10px;
+    }
+
+    .st1{
+		margin-top: 50px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		color: black;
+		margin: auto;
+        font-size: 16px;
+	}
+
+    #sign_up {
+      margin-top: 45%;
+      margin-left: 60%;
+    }
+
+    a {
+      color: #b94648;
+    }
+  </style>
+</head>
+<body>
+  <div id="login_box" class="cen">
+    <h2>注册</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label class="st1" for="account">账号:</label><br>
+        <input class="input" type="text" id="account" name="account" placeholder="请输入10位账号"><br>
+        <label class="st1" for="key">密码:</label><br>
+        <input class="input" type="text" id="key" name="key" placeholder="请输入密码"><br>
+        <input class="button" type="submit" value="注册">
+    </form>
+</div>
+</body>
+<script>
+    {% for msg in messages %}
+        alert('{{ msg.message }}');
+    {% endfor %}
+</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            height: 100vh;
+            background: linear-gradient(to bottom, white, #99CCFF);
+        }
+        .container {
+            position: relative;
+        }
+        .text-overlay {
+            position: absolute;
+            top: -50px; /* 调整文字的垂直位置 */
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <img src="https://photo-static-api.fotomore.com/creative/vcg/veer/400/new/VCG41N663558978.jpg?uid=510&timestamp=1700396935&sign=d0bcd76e757879afba35d4bc36d6b853" width=100% height=100 alt="Icon">
+    <div class="text-overlay">搭搭乐信息填写</div>
+</div>
+<p style="text-align: center;font-size: 24px">———— 活动信息 ————</p>
+<form method="post" style="margin-left: 30%;margin-top:50px;">
+    {% csrf_token %}
+    <p><input type="datetime-local" name="time" placeholder="活动时间"></p>
+    <p><input type="text" name="actname" placeholder="活动名称"></p>
+    <p><input type="text" name="address" placeholder="活动地点"></p>
+    <p><input type="number" name="already" placeholder="已有人数"></p>
+    <p><textarea name="content" placeholder="活动详情"></textarea></p>
+    <p><input type=tel name="phone" placeholder="联系方式"></p>
+    <p><input type="number" name="need" placeholder="需要人数"></p>
+    <p><input type="datetime-local" name="end" placeholder="活动报名截至时间"></p>
+    <p><input type="text" name="typename" id="typename" readonly></p>
+    <p><button type="submit">提交</button></p>
+</form>
+</body>
+<script>
+    {% for msg in messages %}
+        alert('{{ msg.message }}');
+    {% endfor %}
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+    // 使用该函数获取 "typename" 参数
+    const typename = getQueryParam('typename');
+    console.log(typename); // 这将输出 "线上游戏" 或其他通过 URL 传递的值
+    document.getElementById('typename').value = typename;
+</script>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>搭搭乐</title>
+    <style>
+    body {
+      background: url('https://x0.ifengimg.com/res/2019/55AB2A6A24C40252F5A59850719067F203FDAE63_size553_w3840_h2160.jpeg') no-repeat;
+      background-size: cover;
+      height: 100vh;
+    }
+
+    #login_box {
+      width: 20%;
+      height: 400px;
+      background-color: grey;
+      margin: auto;
+      margin-top: 5%;
+      text-align: center;
+      border-radius: 10px;
+      padding: 50px 50px;
+      opacity: 0.8
+    }
+
+    .register{
+	  margin-top: 20px;
+      width: 60%;
+      height: 30px;
+      border-radius: 10px;
+      border: 0;
+      color: Blue;
+      text-align: center;
+      line-height: 30px;
+      font-size: 15px;
+      background: LightBlue;
+	}
+	.cen {
+      width: 20%;
+      height: 400px;
+      background-color: grey;
+      margin: auto;
+      margin-top: 8%;
+      text-align: center;
+      border-radius: 10px;
+      padding: 50px 50px;
+      opacity: 0.8
+    }
+	.st1{
+		margin-top: 50px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		color: black;
+		margin: auto;
+        font-size: 16px;
+
+	}
+	.kelee{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 60%;
+		height: 60%;
+
+	}
+	.load{
+		margin-top: 40px;
+        width: 60%;
+      height: 30px;
+      border-radius: 10px;
+      border: 0;
+      color: Blue;
+      text-align: center;
+      line-height: 30px;
+      font-size: 15px;
+      background: LightBlue;
+	}
+	.input{
+		width: 200px;
+  height: 32px;
+  background-color: #bdbdbd;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 0 10px;
+	}
+
+
+  </style>
+</head>
+<body>
+<div class="cen">
+    <h2 style="color: white">欢迎登陆搭搭乐</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label class="st1" for="account">用户名:</label><br>
+        <input class="input" type="text" name="account" placeholder="请输入内容">
+        <label class="st1" for="key">密码:</label><br>
+        <input class="input" type="password" name="key" placeholder="请输入内容">
+        <input class="load" type="submit" value="立即登录">
+    </form>
+
+    <div>
+        <button class="register" type="button" onclick="gotoregister()">注册</button>
+    </div>
+</div>
+</body>
+<script>
+    function gotoregister() {
+        window.location.href = "./register/";
+    }
+    {% for msg in messages %}
+        alert('{{ msg.message }}');
+    {% endfor %}
+</script>
+
+</html>
